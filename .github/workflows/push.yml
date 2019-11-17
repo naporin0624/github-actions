@@ -16,10 +16,6 @@ jobs:
         uses: funivan/github-autopr@0.2.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: calibreapp/image-actions
-        uses: docker://calibreapp/github-image-actions
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
