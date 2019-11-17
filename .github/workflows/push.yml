@@ -15,7 +15,7 @@ jobs:
       - name: Create PR
         uses: funivan/github-autopr@0.2.0
         with:
-          args: .head_commit.message .repository.default_branch -v
+          args: .head_commit.message -v
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Use Node.js ${{ matrix.node-version }}
