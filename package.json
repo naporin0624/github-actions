@@ -1,0 +1,13 @@
+{
+  "name": "github-actions",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index"
+  },
+  "devDependencies": {
+    "typescript": "^3.7.2"
+  }
+}
