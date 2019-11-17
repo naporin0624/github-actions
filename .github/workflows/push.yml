@@ -1,4 +1,4 @@
-name: Node CI
+name: Push CI
 
 on: [push]
 
@@ -13,6 +13,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    - name: Create PR
+      uses: funivan/github-autopr@0.2.0
+      with:
+        args: .*#pr.*.head_commit.message .repository.default_branch
+      env: 
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
