@@ -14,8 +14,6 @@ jobs:
       - uses: actions/checkout@v1
       - name: Create PR
         uses: funivan/github-autopr@0.2.0
-        with:
-          args: .head_commit.message -v
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Use Node.js ${{ matrix.node-version }}
@@ -34,5 +32,5 @@ jobs:
         uses: wei/curl@v1
         with:
           args: -X GET https://www.google.com
-        env:
-          CI: true
+    env:
+      CI: "true"
