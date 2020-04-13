@@ -11,7 +11,7 @@ async function main() {
   const page = await browser.newPage();
   await page.goto("https://www.google.com", { waitUntil: "networkidle2" });
   await page.waitFor(3000);
-  await page.screenshot({fullPage: true, path: `${process.env.GITHUB_WORKSPACE}/screenshots/screenshot.png`});
+  await page.screenshot({fullPage: true, path: "screenshot.png"});
   await browser.close();
 }
 
