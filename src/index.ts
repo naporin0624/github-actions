@@ -1,5 +1,5 @@
 import puppeteer from "puppeteer-core";
-import github from "@actions/github"
+// import github from "@actions/github"
 // import os from "@actions/core";
 // import io from "@actions/io";
 
