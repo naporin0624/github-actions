@@ -1,17 +1,19 @@
 {
   "name": "github-actions",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "lib/index.js",
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/index"
+    "start": "node lib/index"
   },
   "devDependencies": {
     "typescript": "^3.7.2"
   },
   "dependencies": {
     "@actions/core": "^1.2.3",
-    "@actions/io": "^1.0.2"
+    "@actions/io": "^1.0.2",
+    "@types/puppeteer-core": "^2.0.0",
+    "puppeteer-core": "^2.1.1"
   }
 }
