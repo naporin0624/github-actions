@@ -8,14 +8,12 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [8.x, 10.x, 12.x]
+        node-version: [10.x]
 
     steps:
       - uses: actions/checkout@v1
-      - name: Create PR
-        uses: funivan/github-autopr@0.2.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Hello
+        uses: ./
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -28,9 +26,5 @@ jobs:
       - run: yarn install
       - run: yarn build
       - run: yarn start
-      - name: upload files
-        uses: wei/curl@v1
-        with:
-          args: -X GET https://www.google.com
     env:
       CI: "true"
