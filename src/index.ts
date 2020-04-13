@@ -1,5 +1,5 @@
 // import os from "@actions/core";
-import * as puppeteer from "puppeteer-core";
+import puppeteer from "puppeteer-core";
 // import io from "@actions/io";
 
 const BROWSER_PATH = "/usr/bin/google-chrome";
