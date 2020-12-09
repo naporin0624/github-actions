@@ -1,9 +1,0 @@
-name: "Hello World"
-runs:
-  using: "node12"
-  main: "lib/index.js"
-name: push
-  env:
-    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  run: |
-    echo "hello world"
