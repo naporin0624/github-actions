@@ -9,4 +9,4 @@ jobs:
       - run: echo $(uname)
       - name: test
         run: |
-          echo ${{ github.event.id }}
+          echo ${{ fromJson(github.event) }}
