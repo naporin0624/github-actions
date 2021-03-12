@@ -10,5 +10,5 @@ jobs:
       - name: test
         run: |
           echo "-------------------------"
-          echo "${{ github.event.pull_request }}"
+          echo "${{ github.event.pull_request.number }}"
           echo "-------------------------"
