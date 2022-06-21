@@ -1,0 +1,60 @@
+name: multi-repo
+on: [push]
+  
+jobs:
+  repo1:
+    defaults:
+      run:
+        working-directory: projects/repo1
+    runs-on: ubuntu-latest
+    steps:
+      - name: CurrentDirectory
+        run: |
+          pwd
+      - name: checkout branch
+        uses: actions/checkout@v3
+        with:
+          ref: sample/repo1
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: yarn
+      - name: Install Dependencies
+        run: yarn install
+      - name: Store node_modules
+        uses: actions/cache@v3
+        env:
+          cache-name: repo1-cache
+        with:
+          path: ./node_modules
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('./yarn.lock') }}
+  repo2:
+    defaults:
+      run:
+        working-directory: projects/repo2
+    runs-on: ubuntu-latest
+    steps:
+      - name: CurrentDirectory
+        run: |
+          pwd
+      - name: checkout branch
+        uses: actions/checkout@v3
+        with:
+          ref: sample/repo2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: yarn
+      - name: Install Dependencies
+        run: yarn install
+      - name: Store node_modules
+        uses: actions/cache@v3
+        env:
+          cache-name: repo2-cache
+        with:
+          path: ./node_modules
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('./yarn.lock') }}
+
+
+
+  
