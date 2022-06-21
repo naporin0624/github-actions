@@ -34,6 +34,8 @@ jobs:
         with:
           path: projects/repo1/lib
           key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('projects/repo1/lib/index.js') }}
+      - name: run script
+        run: yarn start
   repo2:
     runs-on: ubuntu-latest
     steps:
@@ -66,6 +68,8 @@ jobs:
         with:
           path: projects/repo2/lib
           key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('projects/repo2/lib/index.js') }}
+      - name: run script
+        run: yarn start
 
   action:
     runs-on: ubuntu-latest
