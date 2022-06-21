@@ -8,6 +8,9 @@
     "start": "node lib/index"
   },
   "devDependencies": {
+    "esbuild": "^0.14.47",
+    "esbuild-register": "^3.3.3",
+    "nodemon": "^2.0.16",
     "typescript": "^3.7.2"
   },
   "dependencies": {
@@ -15,6 +18,7 @@
     "@actions/github": "^2.1.1",
     "@actions/io": "^1.0.2",
     "@types/puppeteer-core": "^2.0.0",
+    "axios": "^0.27.2",
     "puppeteer-core": "^2.1.1"
   }
 }
