@@ -69,6 +69,7 @@ jobs:
 
   action:
     runs-on: ubuntu-latest
+    needs: [repo1, repo2]
     steps:
       - name: checkout repo1 branch
         uses: actions/checkout@v3
