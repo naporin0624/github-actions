@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "start": "node lib/index"
+    "start": "node lib/index",
+    "dev": "nodemon"
   },
   "devDependencies": {
     "esbuild": "^0.14.47",
@@ -18,7 +19,7 @@
     "@actions/github": "^2.1.1",
     "@actions/io": "^1.0.2",
     "@types/puppeteer-core": "^2.0.0",
-    "axios": "^0.27.2",
+    "node-fetch": "^3.2.6",
     "puppeteer-core": "^2.1.1"
   }
 }
