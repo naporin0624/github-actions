@@ -11,6 +11,8 @@ jobs:
       - name: CurrentDirectory
         run: |
           pwd
+        shell: bash
+        
       - name: checkout branch
         uses: actions/checkout@v3
         with:
@@ -37,6 +39,7 @@ jobs:
       - name: CurrentDirectory
         run: |
           pwd
+        shell: bash
       - name: checkout branch
         uses: actions/checkout@v3
         with:
