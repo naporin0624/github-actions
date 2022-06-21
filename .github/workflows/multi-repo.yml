@@ -8,11 +8,6 @@ jobs:
         working-directory: projects/repo1
     runs-on: ubuntu-latest
     steps:
-      - name: CurrentDirectory
-        run: |
-          pwd
-        shell: bash
-        
       - name: checkout branch
         uses: actions/checkout@v3
         with:
@@ -36,10 +31,6 @@ jobs:
         working-directory: projects/repo2
     runs-on: ubuntu-latest
     steps:
-      - name: CurrentDirectory
-        run: |
-          pwd
-        shell: bash
       - name: checkout branch
         uses: actions/checkout@v3
         with:
