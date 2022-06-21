@@ -112,14 +112,13 @@ jobs:
           key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('projects/repo2/lib/index.js') }}
       - name: check script
         run: |
-          cd
           pwd
-
           echo ------repo1------
+          cd projects/repo1
           yarn start
-          echo ------------------
 
           echo ------repo2------
+          cd ../repo2
           yarn start
         shell: bash
   
