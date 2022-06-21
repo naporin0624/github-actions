@@ -3,51 +3,49 @@ on: [push]
   
 jobs:
   repo1:
-    defaults:
-      run:
-        working-directory: projects/repo1
     runs-on: ubuntu-latest
     steps:
       - name: checkout branch
         uses: actions/checkout@v3
         with:
           ref: sample/repo1
+          path: projects/repo1
       - uses: actions/setup-node@v2
         with:
           node-version: 16
           cache: yarn
       - name: Install Dependencies
         run: yarn install
+        working-directory: projects/repo1
       - name: Store node_modules
         uses: actions/cache@v3
         env:
           cache-name: repo1-cache
         with:
-          path: ./node_modules
-          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('./yarn.lock') }}
+          path: projects/repo1/node_modules
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('projects/repo1/yarn.lock') }}
   repo2:
-    defaults:
-      run:
-        working-directory: projects/repo2
     runs-on: ubuntu-latest
     steps:
       - name: checkout branch
         uses: actions/checkout@v3
         with:
           ref: sample/repo2
+          path: projects/repo2
       - uses: actions/setup-node@v2
         with:
           node-version: 16
           cache: yarn
       - name: Install Dependencies
         run: yarn install
+        working-directory: projects/repo2
       - name: Store node_modules
         uses: actions/cache@v3
         env:
           cache-name: repo2-cache
         with:
-          path: ./node_modules
-          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('./yarn.lock') }}
+          path: projects/repo2/node_modules
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('projects/repo2/yarn.lock') }}
 
 
 
