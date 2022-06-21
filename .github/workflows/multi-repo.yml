@@ -137,10 +137,12 @@ jobs:
           pwd
           echo ------repo1------
           cd projects/repo1
+          cat lib/index.js
           yarn start
 
           echo ------repo2------
           cd ../repo2
+          cat lib/index.js
           yarn start
         shell: bash
   
