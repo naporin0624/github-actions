@@ -38,7 +38,9 @@ jobs:
         run: |
           cat package.json
           echo
-          cat src/index.ts
+          cat lib/index.js
+          echo
+          yarn list
           echo
 
           yarn start
@@ -79,7 +81,9 @@ jobs:
         run: |
           cat package.json
           echo
-          cat src/index.ts
+          cat lib/index.js
+          echo
+          yarn list
           echo
 
           yarn start
