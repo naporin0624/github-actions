@@ -37,7 +37,7 @@ jobs:
         with:
           node-version: 16
           cache: yarn
-          cache-dependency-path: projects/repo1/yarn.lock
+          cache-dependency-path: projects/repo2/yarn.lock
       - name: Install Dependencies
         run: yarn install
         working-directory: projects/repo2
