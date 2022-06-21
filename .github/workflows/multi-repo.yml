@@ -15,16 +15,25 @@ jobs:
           node-version: 16
           cache: yarn
           cache-dependency-path: projects/repo1/yarn.lock
-      - name: Install Dependencies
-        run: yarn install
+      - name: setup
+        run: |
+          yarn install
+          yarn build
         working-directory: projects/repo1
       - name: Store node_modules
         uses: actions/cache@v3
         env:
-          cache-name: repo1-cache
+          cache-name: repo1-deps-cache
         with:
           path: projects/repo1/node_modules
           key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('projects/repo1/yarn.lock') }}
+      - name: Store build result
+        uses: actions/cache@v3
+        env:
+          cache-name: repo1-build-cache
+        with:
+          path: projects/repo1/lib
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('projects/repo1/lib/index.js') }}
   repo2:
     runs-on: ubuntu-latest
     steps:
@@ -38,17 +47,67 @@ jobs:
           node-version: 16
           cache: yarn
           cache-dependency-path: projects/repo2/yarn.lock
-      - name: Install Dependencies
-        run: yarn install
+      - name: setup
+        run: |
+          yarn install
+          yarn build
         working-directory: projects/repo2
       - name: Store node_modules
         uses: actions/cache@v3
         env:
-          cache-name: repo2-cache
+          cache-name: repo2-deps-cache
         with:
           path: projects/repo2/node_modules
           key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('projects/repo2/yarn.lock') }}
+      - name: Store build result
+        uses: actions/cache@v3
+        env:
+          cache-name: repo2-build-cache
+        with:
+          path: projects/repo2/lib
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('projects/repo2/lib/index.js') }}
 
+  action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo1 branch
+        uses: actions/checkout@v3
+        with:
+          ref: sample/repo1
+          path: projects/repo1
+      - name: Restore node_modules
+        uses: actions/cache@v3
+        env:
+          cache-name: repo1-deps-cache
+        with:
+          path: projects/repo1/node_modules
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('projects/repo1/yarn.lock') }}
+      - name: Restore build result
+        uses: actions/cache@v3
+        env:
+          cache-name: repo1-build-cache
+        with:
+          path: projects/repo1/lib
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('projects/repo1/lib/index.js') }}
 
+      - name: checkout branch
+        uses: actions/checkout@v3
+        with:
+          ref: sample/repo2
+          path: projects/repo2
+      - name: Restore node_modules
+        uses: actions/cache@v3
+        env:
+          cache-name: repo2-deps-cache
+        with:
+          path: projects/repo2/node_modules
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('projects/repo2/yarn.lock') }}
+      - name: Restore build result
+        uses: actions/cache@v3
+        env:
+          cache-name: repo2-build-cache
+        with:
+          path: projects/repo2/lib
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('projects/repo2/lib/index.js') }}
 
   
